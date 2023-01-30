@@ -1,67 +1,108 @@
 // sketch.js - purpose and description here
-// Author: Your Name
-// Date:
+// Author: Hitesh Ahuja, Johnny Wong
+// Date: 1-28-23
 
 // Here is how you might set up an OOP p5.js project
 // Note that p5.js looks for a file called sketch.js
 
 // Constants - User-servicable parts
 // In a longer project I like to put these in a separate file
-const VALUE1 = 1;
-const VALUE2 = 2;
+let x, y;
 
-// Globals
-let myInstance;
-let canvasContainer;
-
-class MyClass {
-    constructor(param1, param2) {
-        this.property1 = param1;
-        this.property2 = param2;
-    }
-
-    myMethod() {
-        // code to run when method is called
-    }
-}
-
-// setup() function is called once when the program starts
 function setup() {
-    // place our canvas, making it fit our container
-    canvasContainer = $("#canvas-container");
-    let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
-    canvas.parent("canvas-container");
-    // resize canvas is the page is resized
-    $(window).resize(function() {
-        console.log("Resizing...");
-        resizeCanvas(canvasContainer.width(), canvasContainer.height());
-    });
-    // create an instance of the class
-    myInstance = new MyClass(VALUE1, VALUE2);
-
-    var centerHorz = windowWidth / 2;
-    var centerVert = windowHeight / 2;
+  createCanvas(1000, 600);
+  background(0);
+  stroke(255);
+  xc = -600;
+  yc = 600;
+  x = width / 2;
+  y = height / 2;
+  xx = width / 2;
+  yy = height / 2;
+  xxx = width / 2;
+  yyy = height / 2;
+  red = random(0,255);
+  green = random(0,255);
+  blue = random(0,255);
+  transparency = 15;
+  xxred = random(0,255);
+  xxgreen = random(0,255);
+  xxblue = random(0,255);
+  xxtransparency = 15;
+  xxxred = random(0,255);
+  xxxgreen = random(0,255);
+  xxxblue = random(0,255);
+  xxxtransparency = 15;
 }
 
-// draw() function is called repeatedly, it's the main animation loop
 function draw() {
-    background(220);    
-    // call a method on the instance
-    myInstance.myMethod();
+  num = 0
+  let time_ct = frameCount/60;
+    point(x, y);
+    xOld = x;
+    yOld = y;
+    x = width / 2 + random(xc, yc);
+    y = height / 2 + random(xc, yc);
+    x = constrain(x, 0, width);
+    y = constrain(y, 0, height);
+    let distance = dist(500,300, x,y);
+    let transparency = map(distance, 0, 450, 255, 0);
+    // Draw a line from the last point to the current point
+    if(time_ct % 5 == 0){
+      red = random(0,255);
+      green = random(0,255);
+      blue = random(0,255);
+      xc += 100;
+      yc -= 100;
+    }
+    stroke(red, blue, green, transparency);
+    line(xOld, yOld, x, y);
+    
+    point(xx, yy);
+    xxOld = xx;
+    yyOld = yy;
+    xx = width / 2 + random(xc, yc);
+    yy = height / 2 + random(xc, yc);
+    xx = constrain(xx, 0, width);
+    yy = constrain(yy, 0, height);
+    let xxdistance = dist(500,300, xx,yy);
+    let xxtransparency = map(xxdistance, 0, 450, 255, 0);
+    // Draw a line from the last point to the current point
+    if(time_ct % 5 == 0){
+      xxred = random(0,255);
+      xxgreen = random(0,255);
+      xxblue = random(0,255);
+      
+    }
+    stroke(xxred, xxblue, xxgreen, xxtransparency);
+    line(xxOld, yyOld, xx, yy);
 
-    // Put drawings here
-    var centerHorz = canvasContainer.width() / 2 - 125;
-    var centerVert = canvasContainer.height() / 2 - 125;
-    fill(234, 31, 81);
-    noStroke();
-    rect(centerHorz, centerVert, 250, 250);
-    fill(255);
-    textStyle(BOLD);
-    textSize(140);
-    text("p5*", centerHorz + 10, centerVert + 200);
+    point(xxx, yyy);
+    xxxOld = xxx;
+    yyyOld = yyy;
+    xxx = width / 2 + random(xc, yc);
+    yyy = height / 2 + random(xc, yc);
+    xxx = constrain(xxx, 0, width);
+    yyy = constrain(yyy, 0, height);
+    let xxxdistance = dist(500,300, xxx,yyy);
+    let xxxtransparency = map(xxxdistance, 0, 450, 255, 0);
+    // Draw a line from the last point to the current point
+    if(time_ct % 5 == 0){
+      xxxred = random(0,255);
+      xxxgreen = random(0,255);
+      xxxblue = random(0,255);
+      
+    }
+    stroke(xxxred, xxxblue, xxxgreen, xxxtransparency);
+    line(xxxOld, yyyOld, xxx, yyy);
 }
 
-// mousePressed() function is called once after every time a mouse button is pressed
-function mousePressed() {
-    // code to run when mouse is pressed
+function lineGenerator(xOld, yOld, x, y){
+  let time_ct = frameCount/60;
+  point(x, y);
+  // Draw a line from the last point to the current point
+  line(xOld, yOld, x, y);
+  if(time_ct % 5 == 0){
+    stroke(random(0,255),random(0,255),random(0,255));
+  }
 }
