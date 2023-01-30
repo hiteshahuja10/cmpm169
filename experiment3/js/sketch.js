@@ -2,11 +2,6 @@
 // Author: Hitesh Ahuja, Johnny Wong
 // Date: 1-28-23
 
-// Here is how you might set up an OOP p5.js project
-// Note that p5.js looks for a file called sketch.js
-
-// Constants - User-servicable parts
-// In a longer project I like to put these in a separate file
 let x, y;
 
 function setup() {
@@ -15,6 +10,7 @@ function setup() {
   stroke(255);
   xc = -600;
   yc = 600;
+  tf = false;
   x = width / 2;
   y = height / 2;
   xx = width / 2;
@@ -52,8 +48,17 @@ function draw() {
       red = random(0,255);
       green = random(0,255);
       blue = random(0,255);
-      xc += 100;
-      yc -= 100;
+      if (xc == -100 && yc == 100){
+        tf = true;
+      }
+      if (tf == false){
+        xc += 100;
+        yc -= 100;
+      }
+      else{
+        xc -= 100;
+        yc += 100;
+      }
     }
     stroke(red, blue, green, transparency);
     line(xOld, yOld, x, y);
@@ -95,14 +100,4 @@ function draw() {
     }
     stroke(xxxred, xxxblue, xxxgreen, xxxtransparency);
     line(xxxOld, yyyOld, xxx, yyy);
-}
-
-function lineGenerator(xOld, yOld, x, y){
-  let time_ct = frameCount/60;
-  point(x, y);
-  // Draw a line from the last point to the current point
-  line(xOld, yOld, x, y);
-  if(time_ct % 5 == 0){
-    stroke(random(0,255),random(0,255),random(0,255));
-  }
 }
