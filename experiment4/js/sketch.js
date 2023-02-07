@@ -1,6 +1,6 @@
 // sketch.js - Bouncing Ball hits drums and makes sounds
 // Author: Hitesh Ahuja, Johnny Wong
-// Date:2/4/2023
+// Date: 2/4/2023
 
 
 // bouncing ball code inspired from https://github.com/pselodux/Bounce/blob/master/bounce.js
