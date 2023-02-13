@@ -66,7 +66,7 @@ function draw() {
 
     movingX += sin(angle)*1000;
 	angle += 0.05;
-    if (size > 300){
+    if (size > 325){
         red = random(0,255);
         green = random(0,255);
         blue = random(0,255);
