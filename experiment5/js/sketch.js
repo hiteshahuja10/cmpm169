@@ -1,19 +1,15 @@
-// sketch.js - purpose and description here
+// sketch.js - 3D Madness
 // Author: Hitesh Ahuja, Johnny Wong
-// Date: 2/11/23
+// Date: 2/13/23
 
-// Here is how you might set up an OOP p5.js project
-// Note that p5.js looks for a file called sketch.js
+// Inspired from https://openprocessing.org/sketch/1421965
 
-// Constants - User-servicable parts
-// In a longer project I like to put these in a separate file
 let angle = 0;
 let size = 100;
 
 
 function setup() {
 	createCanvas(windowWidth, windowHeight,WEBGL);
-	// createEasyCam();
     lights();
 	background(100);
     red = random(0,255);
@@ -62,7 +58,6 @@ function draw() {
 	fill('red');
 	box(10);
 	pop();
-    //angle += 0.5;
 
     movingX += sin(angle)*1000;
 	angle += 0.05;
@@ -70,7 +65,7 @@ function draw() {
         red = random(0,255);
         green = random(0,255);
         blue = random(0,255);
-        size = 100;
+        size = 60;
     }
     else{
         size += 0.5;
