@@ -1,67 +1,92 @@
-// sketch.js - purpose and description here
-// Author: Your Name
-// Date:
+// sketch.js - Road Trip
+// Author: Hitesh Ahuja, Johnny Wong
+// Date: 2-20-23
 
-// Here is how you might set up an OOP p5.js project
-// Note that p5.js looks for a file called sketch.js
+let str = "Hawaii Italy Tokyo France London Florida Canada Barcelona";
+let str_arr = [];
 
-// Constants - User-servicable parts
-// In a longer project I like to put these in a separate file
-const VALUE1 = 1;
-const VALUE2 = 2;
+let font;
+let switcher = false;
 
-// Globals
-let myInstance;
-let canvasContainer;
 
-class MyClass {
-    constructor(param1, param2) {
-        this.property1 = param1;
-        this.property2 = param2;
-    }
-
-    myMethod() {
-        // code to run when method is called
-    }
+function preload() {
+  font = loadFont("Autumn.ttf");
 }
 
-// setup() function is called once when the program starts
 function setup() {
-    // place our canvas, making it fit our container
-    canvasContainer = $("#canvas-container");
-    let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
-    canvas.parent("canvas-container");
-    // resize canvas is the page is resized
-    $(window).resize(function() {
-        console.log("Resizing...");
-        resizeCanvas(canvasContainer.width(), canvasContainer.height());
-    });
-    // create an instance of the class
-    myInstance = new MyClass(VALUE1, VALUE2);
-
-    var centerHorz = windowWidth / 2;
-    var centerVert = windowHeight / 2;
+  createCanvas(windowWidth, windowHeight, WEBGL);
+  colorMode(HSB, 360, 100, 100, 100);
+  red = random(0,255);
+  green = random(0,255);
+  blue = random(0,255);
+  let strs = str.split(" ");
+  for (let i = 0; i < strs.length*20; i++) {
+    let x = random();
+    if(x < 0.5){
+        x = -width / 2;
+    }else{
+        x = width / 2;
+    }
+    let y = random();
+    if(y < 0.5){
+        y = -height / 2;
+    }else{
+        y = height / 2;
+    }
+    let z = random(-width*5, width/2);
+    str_arr.push(new Type(strs[i%strs.length], x, y, z));
+  }
 }
 
-// draw() function is called repeatedly, it's the main animation loop
 function draw() {
-    background(220);    
-    // call a method on the instance
-    myInstance.myMethod();
-
-    // Put drawings here
-    var centerHorz = canvasContainer.width() / 2 - 125;
-    var centerVert = canvasContainer.height() / 2 - 125;
-    fill(234, 31, 81);
-    noStroke();
-    rect(centerHorz, centerVert, 250, 250);
-    fill(255);
-    textStyle(BOLD);
-    textSize(140);
-    text("p5*", centerHorz + 10, centerVert + 200);
+  background(0,0,0);
+	orbitControl();
+  for (let i = 0; i < str_arr.length; i++) {
+    str_arr[i].update();
+    str_arr[i].display();
+  }
 }
 
-// mousePressed() function is called once after every time a mouse button is pressed
-function mousePressed() {
-    // code to run when mouse is pressed
+class Type {
+  constructor(_str, _x, _y, _z) {
+    this.str = _str;
+    this.x = _x;
+    this.y = _y;
+    this.z = _z;
+  }
+
+  update() {
+    this.z += 10;
+    if(this.z > width/2){
+    	this.z = -width*5;
+    }
+
+  }
+
+  display() {
+    let time_ct = frameCount/60;
+    if(time_ct % 2 == 0){
+        switcher = true;
+    }else if(time_ct % 2 == 1){
+        switcher = false;
+    }
+    if(switcher == false){
+        this.x -= 20;
+    }
+    if(switcher == true){
+        this.x += 20;
+    }
+
+    red = random(0,255);
+    green = random(0,255);
+    blue = random(0,255);
+    push();
+    translate(this.x, this.y, this.z);
+    textAlign(CENTER, CENTER);
+    textFont(font);
+    textSize(100);
+	fill(red, green, blue);
+    text(this.str, 0, 0);
+    pop();
+  }
 }
