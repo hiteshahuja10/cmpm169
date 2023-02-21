@@ -2,6 +2,8 @@
 // Author: Hitesh Ahuja, Johnny Wong
 // Date: 2-20-23
 
+// Inspired from https://openprocessing.org/sketch/691190
+
 let str = "Hawaii Italy Tokyo France London Florida Canada Barcelona";
 let str_arr = [];
 
