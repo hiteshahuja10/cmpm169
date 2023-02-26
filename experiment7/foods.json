@@ -1,0 +1,45 @@
+{
+    "Pizza": {
+        "name": "Pizza",
+		"yummy": "10"
+	}, 
+    "Burrito": {
+        "name": "Burrito",
+		"yummy": "7"
+	}, 
+    "Pasta": {
+        "name": "Pasta",
+		"yummy": "5"
+	}, 
+    "Ice Cream": {
+        "name": "Ice Cream",
+		"yummy": "9"
+	}, 
+    "French Fries": {
+        "name": "French Fries",
+		"yummy": "8"
+	}, 
+    "Wings": {
+        "name": "Wings",
+		"yummy": "3"
+	}, 
+    "Surstromming": {
+        "name": "Surstromming",
+		"yummy": "1"
+	}, 
+    "Tuna": {
+        "name": "Tuna",
+		"yummy": "2"
+	},
+    "Fish": {
+        "name": "Fish",
+		"yummy": "4"
+	},
+    "Burgers": {
+        "name": "Burgers",
+		"yummy": "6"
+	}
+}
+
+
+  
