@@ -1,8 +1,7 @@
-// sketch.js - purpose and description here
+// sketch.js - Food Mashup
 // Author: Hitesh Ahuja, Johnny Wong
-// Date: 2-25-23
+// Date: 2-26-23
 
-let dog;
 let foodarray = [];
 let height = 200;
 let randomX,randomY;
@@ -16,7 +15,6 @@ function setup() {
   textSize(40);
   background(30);
   DrawWords();
-  
 }
 
 function draw() {
